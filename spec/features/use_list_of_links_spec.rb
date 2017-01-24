@@ -16,7 +16,7 @@ feature 'User Story 1: see list of links' do
     expect(page.status_code).to eq 200
 
     within 'ul#links' do
-      expext(page).to have_content 'Makers Academy'
+      expect(page).to have_content 'Makers Academy'
     end
   end
 end
