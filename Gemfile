@@ -15,4 +15,5 @@ group :test_dev do
   gem 'pry'
   gem 'coveralls', require: false
   gem 'rake'
+  gem 'database_cleaner'
 end
