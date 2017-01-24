@@ -33,3 +33,20 @@ I'd like to see a list of links from the database filtered by their tag
 |User     |log_in;              |Username|
 |Weblinks |add_tag;             |Tags    |
 |Database |save_link; find_link |Links   |
+
+### Understanding CRUD
+
+###### Defines CRUD
+* Create, read, update and delete (as an acronym CRUD) are the four basic functions of persistent storage
+
+###### Defines SQL
+* SQL stands for Structured Query Language and it is the standard language for relational database management
+
+###### Give SQL examples for each CRUD action
+
+|CRUD Action | SQL Example                                                   |
+|------------|:-------------------------------------------------------------:|
+|Create      |INSERT INTO table_name (column_one) VALUES (value_one);        |
+|Read        |SELECT * FROM table_name;                                      |
+|Update      |UPDATE table_name SET column_one = value_one WHERE [condition];|
+|Delete      |DELETE FROM table_name WHERE [condition];                      |
