@@ -1,10 +1,12 @@
 <h1>Here are your links!</h1>
 
+<h1>Click here to add a new link:</h1>
+<a href='/add'>Add link</a>
+
 <ul id="links">
 <% @links.each do |link| %>
   <li>
-    Title: <%=link.title%>;
-    URL: <%=link.url%>
+    <a href = <%=link.url%> ><%= link.title %></a>
   </li>
 <% end %>
 </ul>
