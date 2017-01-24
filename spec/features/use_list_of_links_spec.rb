@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 # User Story 1
 #
 # As a time-pressed user
