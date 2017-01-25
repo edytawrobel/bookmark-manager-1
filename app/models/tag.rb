@@ -5,6 +5,4 @@ class Tag
   property :id,     Serial
   property :name,   String
 
-  belongs_to :link
-
 end
