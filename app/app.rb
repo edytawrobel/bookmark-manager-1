@@ -8,10 +8,12 @@ class Bookmarks < Sinatra::Base
   enable :sessions
 
   get '/' do
-    'Hello Bookmarks!'
+    erb :sign_up
   end
 
   get '/links' do
+    @email = session[:email]
+    @password = session[:password]
     @links = Link.all
     erb :links
   end
@@ -36,6 +38,11 @@ class Bookmarks < Sinatra::Base
     erb :links
   end
 
+  post '/sign_up' do
+    session[:email] = params[:email]
+    session[:password] = params[:password]
+    redirect '/links'
+  end
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
