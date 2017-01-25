@@ -1,0 +1,10 @@
+<ul>
+
+  <% @links.tags each do |tag| %>
+    <li>
+      <% if tag.name=='bubbles'
+        <a href = <%=link.url%> ><%= link.tag %></a>
+
+    </li>
+  <% end %>
+</ul>
