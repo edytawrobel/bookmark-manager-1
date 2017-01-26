@@ -9,10 +9,33 @@ require 'spec_helper'
 
 
 
-feature 'Sign up for the account' do
-  scenario 'I would like to sign up as a new user' do
-    expect { sign_up }.to change(User, :count).by(1)
-       expect(page).to have_content('Welcome, tom@example.com')
-       expect(User.first.email).to eq('tom@example.com')
-    end
-end
+# feature 'Sign up for the account' do
+#   scenario 'I would like to sign up as a new user' do
+#     expect { sign_up }.to change(User, :count).by(1)
+#        expect(page).to have_content('Welcome, tom@example.com')
+#        expect(User.first.email).to eq('tom@example.com')
+#     end
+# end
+
+
+
+ # Fills in an email and password into the user signup form.
+ # Fills in a mismatching confirmation password into the user signup form.
+ # Checks that when the form is submitted, no new users are created.
+ feature 'User sign up' do
+
+   scenario 'requires a matching confirmation password' do
+     expect { sign_up(password_confirmation: 'dogs11') }.not_to change(User, :count)
+   end
+
+   def sign_up(email: 'tom@example.com',
+               password: 'dogs10',
+               password_confirmation: 'dogs10')
+     visit '/users/new'
+     fill_in :email, with: email
+     fill_in :password, with: password
+     fill_in :password_confirmation, with: password_confirmation
+     click_button 'Sign up'
+   end
+
+ end

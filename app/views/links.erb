@@ -1,9 +1,4 @@
-<h1>Welcome <%= @email %>!</h1>
-<br>
 <h2>Here are your links!</h2>
-
-<h1>Click here to add a new link:</h1>
-<a href='/add'>Add link</a>
 
 <ul id="links">
 <% @links.each do |link| %>
@@ -12,3 +7,6 @@
   </li>
 <% end %>
 </ul>
+
+<h1>Click here to add a new link:</h1>
+<a href='/add'>Add link</a>
