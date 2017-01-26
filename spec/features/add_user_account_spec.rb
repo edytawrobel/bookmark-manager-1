@@ -36,4 +36,11 @@ require 'spec_helper'
      click_button 'Sign up'
    end
 
+   scenario 'without the email address' do
+     expect { sign_up(email: nil) }.not_to change(User, :count)
+   end
+
+   scenario 'cannot sign up with incorrect email address' do
+     expect { sign_up(email: 'email@invalid') }.not_to change(User, :count)
+   end
  end

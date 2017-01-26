@@ -16,7 +16,7 @@ class Bookmarks < Sinatra::Base
   end
 
   get '/' do
-    'Hello Bookmarks!'
+    redirect '/links'
   end
 
   get '/users/new' do
