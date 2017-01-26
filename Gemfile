@@ -17,3 +17,5 @@ group :test_dev do
   gem 'rake'
   gem 'database_cleaner'
 end
+
+gem 'bcrypt'

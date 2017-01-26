@@ -10,14 +10,9 @@ require 'spec_helper'
 
 
 feature 'Sign up for the account' do
-  scenario 'I would like to submit the form' do
-    visit ('/')
-
-    fill_in(:email, with: 'amanda.clement@gmail.com')
-    fill_in(:password, with: 'dog2013')
-    click_button ('Submit')
-
-    expect(page).to have_content('Welcome amanda.clement@gmail.com!')
-    #expect { user_account }.to change{user_account.count}.by(1)
-  end
+  scenario 'I would like to sign up as a new user' do
+    expect { sign_up }.to change(User, :count).by(1)
+       expect(page).to have_content('Welcome, tom@example.com')
+       expect(User.first.email).to eq('tom@example.com')
+    end
 end

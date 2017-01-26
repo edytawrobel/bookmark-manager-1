@@ -6,14 +6,30 @@ require './app/dmconfig'
 class Bookmarks < Sinatra::Base
 
   enable :sessions
+  set :session_secret, 'top secret'
+
+  helpers do
+   def current_user
+     @current_user ||= User.get(session[:user_id])
+   end
+  end
 
   get '/' do
-    erb :sign_up
+    'Hello Bookmarks!'
+  end
+
+  get '/users/new' do
+    erb :'/users/new'
+  end
+
+  post '/users' do
+    user = User.create(email: params[:email],
+                password: params[:password])
+    session[:user_id] = user.id
+    redirect '/links'
   end
 
   get '/links' do
-    @email = session[:email]
-    @password = session[:password]
     @links = Link.all
     erb :links
   end
