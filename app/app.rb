@@ -1,10 +1,11 @@
 ENV['RACK_ENV'] ||= 'development'
 
 require 'sinatra/base'
+require 'sinatra/flash'
 require './app/dmconfig'
 
 class Bookmarks < Sinatra::Base
-
+  register Sinatra::Flash
   enable :sessions
   set :session_secret, 'top secret'
 
@@ -19,15 +20,21 @@ class Bookmarks < Sinatra::Base
   end
 
   get '/users/new' do
+    @user = User.new
     erb :'/users/new'
   end
 
   post '/users' do
-    user = User.create(email: params[:email],
+    @user = User.new(email: params[:email],
                 password: params[:password],
                 password_confirmation: params[:password_confirmation])
-    session[:user_id] = user.id
-    redirect '/links'
+    if @user.save
+      session[:user_id] = user.id
+      redirect '/links'
+    else
+      flash.now[:notice] = 'Please enter your password again'
+      erb :'users/new'
+    end
   end
 
   get '/links' do

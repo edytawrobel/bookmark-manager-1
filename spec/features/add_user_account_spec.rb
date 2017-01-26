@@ -7,8 +7,6 @@ require 'spec_helper'
 #  Checks that the user's email address is displayed as part of the welcome message.
 #  Checks that the User count increases by 1.
 
-
-
 # feature 'Sign up for the account' do
 #   scenario 'I would like to sign up as a new user' do
 #     expect { sign_up }.to change(User, :count).by(1)
@@ -17,8 +15,6 @@ require 'spec_helper'
 #     end
 # end
 
-
-
  # Fills in an email and password into the user signup form.
  # Fills in a mismatching confirmation password into the user signup form.
  # Checks that when the form is submitted, no new users are created.
@@ -26,6 +22,8 @@ require 'spec_helper'
 
    scenario 'requires a matching confirmation password' do
      expect { sign_up(password_confirmation: 'dogs11') }.not_to change(User, :count)
+     expect(current_path).to eq('/users')
+     expect(page).to have_content 'Please enter your password again'
    end
 
    def sign_up(email: 'tom@example.com',
